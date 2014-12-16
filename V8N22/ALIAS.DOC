@@ -1,0 +1,72 @@
+UTILITIES  Ross Greenberg            
+Vol. 8, No. 21                      Filename:  ALIAS
+
+
+ALIAS
+Command
+
+Douglas Boling and Jeff Prosise December 26, 1989 (Utilities)
+
+
+Purpose: A TSR utility that enables DOS command-line editing and recall of 
+         previously issued commands and that permits assignment of long 
+         commands and environment strings to short synonyms ("aliases") or 
+         function keys.
+
+Format: ALIAS [?][/U][/D][/E][/L][/F [d:][path] filename ]
+	[/B nn][/M nn][/S nn][alias [command]]
+
+Remarks: When loaded without any of its optional switches, ALIAS reserves a 
+         buffer size of 512 bytes for user-entered alias strings and a command
+         stack that permits recalling the last 16 commands issued.  These 
+         defaults (/B 512 and /S 16) can only be changed at load time.  At this
+         time, too, the /F switch can be used with a filename  (plus drive and
+         path)  containing regularly used aliases (see Note).
+
+	Previously issued commands can be recalled to the command line with the
+        Up and Down Arrow keys.  When many commands are stacked, typing a few 
+        initial letters before hitting the recall key will speed retrieval by 
+        skipping commands that do not match the typed pattern.  Use the 
+        optional /M nn switch, where nn is a number, to set a minimum length of
+        command strings to be stacked.  The default, /M 1, remembers all 
+        commands.
+
+	Whether recalled or newly typed, command-line entries can be edited 
+        when ALIAS is loaded.  The Left and Right Arrow keys move the cursor by
+        character; Ctrl-Left and Ctrl-Right move by word; and Home and End go 
+        to the line  ends.  The Del and Backspace keys delete characters; 
+        Ctrl-Backspace deletes the word at the cursor; and Ctrl-End deletes to
+        the end of the line.  Pressing Esc clears the command line and returns
+        to the bottom of the command stack.  The Ins key toggles between 
+        overstrike (the default) and insert mode for character entry on the 
+        command line. 
+
+	The command ALIAS alias [command] is used to define an alias or command
+        synonym.  The alias variable may be any one-word alphanumeric string; 
+        the command variable  may contain multiple words and must end with a 
+        carriage return.  Defining an alias but omitting the command variable
+        removes a previous alias assignment.  Function keys and their Alt-, 
+        Shift-, and Ctrl- combinations may be used in place of alias by being 
+        designated thus: [Fn], [AFn], [SFn], [CFn], with 1 to 10 as the values 
+        of n.  An asterisk after the close bracket (for example, [F1]*) causes
+        immediate command-string execution when the function key is pressed; 
+        otherwise, Enter must also be pressed.  The command variable may 
+        include replaceable command-line parameters, (for example, %1), as in 
+        batch files.  Environment strings, such as a PATH string, may be used 
+        as the command variable by being placed between a pair of % signs, 
+        provided they do nral.
+
+	A list of active aliases can be obtained at any time by entering ALIAS
+        with its /L switch.  Alias processing can be temporarily disabled with
+        the /D switch and reenabled with the /E switch.  ALIAS ? brings up a 
+        help screen.  The /U switch uninstalls ALIAS from memory, when 
+        possible.
+
+Note:	A plain ASCII file containing regular user-defined aliases may be 
+        installed with the /F switch when ALIAS is loaded, as, for example,
+        ALIAS /F C:\BIN\MYALIAS.TXT.  This file may be up to 32K and may also 
+        contain ALIAS optional switches.  Note that // and /* may be used to 
+        add comments on the remainder of a line and that blank lines are not 
+        processed.
+	
+

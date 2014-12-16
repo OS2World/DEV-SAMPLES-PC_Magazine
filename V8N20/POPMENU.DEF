@@ -1,0 +1,16 @@
+;------------------------------------
+; POPMENU.DEF module definition file
+;------------------------------------
+
+NAME           POPMENU   WINDOWAPI
+
+DESCRIPTION    'Popup Menu (c) 1989, Ziff Communications Co.'
+PROTMODE
+HEAPSIZE       1024
+STACKSIZE      8192
+EXPORTS        ClientWndProc
+               AboutDlgProc
+
+
+
+

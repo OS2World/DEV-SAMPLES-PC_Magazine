@@ -1,0 +1,16 @@
+#------------------
+# TAQUIN make file
+#------------------
+
+taquin.obj : taquin.c taquin.h
+     cl -c -G2sw -W3 taquin.c
+
+taquin.res : taquin.rc taquin.h taquin.ico
+     rc -r taquin
+
+taquin.exe : taquin.obj taquin.def
+     link taquin, /align:16, NUL, os2, taquin
+     rc taquin.res
+
+taquin.exe : taquin.res
+     rc taquin.res

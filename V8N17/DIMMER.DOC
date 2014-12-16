@@ -1,0 +1,38 @@
+DIMMER.COM
+Command
+
+Douglas Boling and Jeff Prosise                    October 17, 1989 (Utilities)
+
+
+Purpose:	To provide software control of VGA monitor brightness
+interactively from the keyboard, through parameters entered on the command line,
+or at a specified interval after the last keystroke.
+
+Format:	DIMMER [[+|-]adj] [/D time [+|-]adj] [/V[+|-]] [/U]
+
+Remarks:	Entered without any of its optional parameters, DIMMER uses the
+Alt-Up-Arrow and Alt-Down-Arrow keys to increase or decrease screen brightness.
+The original intensity level can be restored at any time by pressing Alt-Home.
+DIMMER is a memory-resident program (see Note); it can be uninstalled by being
+run with the /U switch.
+
+	The adj parameter accepts integer values from +63 to -63.  Although
+relative to the intensity level in effect when the program loads, a value of -63
+will completely blank the screen and +63 will wash out almost all colors.  The
+time parameter sets the number of minutes (up to 65,534) to allow after the last
+keystroke.  Used in conjunction with the optional /D switch and an adj value
+(usually -63), the time parameter is normally used when it is desired to blank
+the screen after a specified period of keyboard inactivity.  Any subsequent
+keypress will restore the screen to its original level, but as this keystroke
+will be fed to the application, it is safest to hit an unaccompanied Ctrl, Alt,
+or Shift key.  Once active, the screen-saver option can be cancelled by entering
+DIMMER /D 0.
+
+	With applications that do not write directly to the video BIOS, a
+ blanked screen can be automatically restored when the program attempts to
+ update the display.  This is accomplished by using the optional /V (or V+)
+ switch.  By default, DIMMER restores the intensity level only when a keystroke
+ is entered, which is equivalent to running the program with a /V- command-line
+ switch.
+
+	

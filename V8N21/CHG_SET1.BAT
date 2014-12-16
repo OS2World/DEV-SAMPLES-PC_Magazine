@@ -1,0 +1,3 @@
+@ECHO OFF
+REM CHG_SET1.BAT
+CALL CHG_SET2 %9;%8;%7;%6;%5;%4;%3;%2;%1;

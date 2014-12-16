@@ -1,0 +1,33 @@
+/*---------------------------
+   TAQUIN.RC resource script
+  ---------------------------*/
+
+#include <os2.h>
+#include "taquin.h"
+
+POINTER ID_RESOURCE taquin.ico
+
+MENU ID_RESOURCE
+     {
+     SUBMENU  "~Options",                         -1
+          {
+          MENUITEM "~Normal Reset",               IDM_NORMAL
+          MENUITEM "~Inverted Reset",             IDM_INVERT
+          MENUITEM "~Scramble",                   IDM_SCRAMBLE
+          MENUITEM SEPARATOR
+          MENUITEM "A~bout Jeu de Taquin...",     IDM_ABOUT
+          }
+     }
+
+DLGTEMPLATE IDD_ABOUT
+     {
+     DIALOG "", 0, 32, 32, 200, 100,, FCF_DLGBORDER
+          {
+          CTEXT "Jeu de Taquin"                       -1, 10, 76, 180, 8
+          ICON  ID_RESOURCE                           -1,  8, 68,   0, 0
+          CTEXT "PC Magazine, Vol. 8 No. 12 & 13",    -1, 10, 52, 180, 8
+          CTEXT "(c) 1989, Ziff Communications Co."   -1, 10, 42, 180, 8
+          CTEXT "Programmed by Charles Petzold, 1/89" -1, 10, 32, 180, 8
+          DEFPUSHBUTTON "OK"             DID_OK, 80, 8, 40, 16, WS_GROUP
+          }
+     }

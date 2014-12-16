@@ -1,0 +1,80 @@
+ {;}DEMO.WPMù--ùdemonstratesùseveralùconceptsùinùWordPerfect
+     macroùprogramming.
+{;}=======================================================
+{;}SECTIONù1ù--ùUsingùdisplayùattributesùinùprompts
+
+{;}Buildùaùrowùofù*'sùinùVARù1ùandùaùhorizontalùlineùinùVARù2
+{ASSIGN}1********
+{ASSIGN}1{VAR 1}{VAR 1}{VAR 1}{VAR 1}
+{ASSIGN}1{VAR 1}{VAR 1}
+{ASSIGN}2ÄÄÄÄÄÄÄÄ
+{ASSIGN}2{VAR 2}{VAR 2}{VAR 2}{VAR 2}
+{ASSIGN}2{VAR 2}{VAR 2}
+{PROMPT}
+{^R}{Home}
+Doùyouùlikeùtheseùcolors?ùù{^N}{^P}YES!{^O}{^P}ù(no)
+{^Q}
+{;}Theùlinesùbelowùcontainùvariousùtypesùofùdisplayùformatting
+     codes.ùùConsultùtheùmacroùprogrammingùAppendixùforùa
+     detailedùdescriptionùofùtheseùcodes.ùùNoteùthatùsome
+     ofùtheùcontrolùcharacters,ùspecificallyùthoseùfromù{^H}
+     toù{^L},ùareùdisplayedùasùcommandùcodes.
+{^P}{^E}{^E}{^N}{^E}         ÖÄ{VAR 2}Ä·{^Q}
+{^P}{^E}{^F}{^N}{^E}         º{^Q}ù{^N}{^A}{VAR1}{^Q}ù{^N}{^E}º{^Q}
+{^P}{^E}{^G}{^N}{^E}         º{^Q}ù{^N}{^B}{VAR1}{^Q}ù{^N}{^E}º{^Q}
+{^P}{^E}{Home}{^N}{^E}       º{^Q}ù{^N}{^G}{VAR1}{^Q}ù{^N}{^E}º{^Q}
+{^P}{^E}{Tab}{^N}{^E}        º{^Q}ù{^N}{^D}{VAR1}{^Q}ù{^N}{^E}º{^Q}
+{^P}{^E}{Enter}{^N}{^E}      º{^Q}ù{^N}{^C}{VAR1}{^Q}ù{^N}{^E}º{^Q}
+{^P}{^E}{Del to EOL}{^N}{^E} º{^Q}ù{^N}{Del to EOL}{VAR1}{^Q}ù{^N}{^E}º{^Q}
+{^P}{^E}{Del to EOP}{^N}{^E} º{^Q}ù{^N}{Enter}{VAR1}{^Q}ù{^N}{^E}º{^Q}
+{^P}{^E}{^M}{^N}{^E}         º{^Q}ù{^N}{^M}{VAR1}{^Q}ù{^N}{^E}º{^Q}
+{^P}{^E}{^N}{^N}{^E}         º{^Q}ù{^N}{^O}{VAR1}{^Q}ù{^N}{^E}º{^Q}
+{^P}{^E}{^O}{^N}{^E}         ÓÄ{VAR 2}Ä½{^Q}
+
+
+{;}SECTIONù2ù--ùUserùinputùwithùdefaultùvalueù"Y"
+{CHAR}1
+{DISPLAY OFF}{DISPLAY ON}
+{IF}"{VAR 1}"='n'     {;}Ifùtheùuserùenteredùsmall-n...
+     {ASSIGN}1 N      {;}..ùmakeùitùaùcapitalùN.
+{END IF}
+{IF}"{VAR 1}"!='N'    {;}IfùtheùuserùenteredùANYTHINGùbut..
+     {ASSIGN}1 Y      {;}N,ùmakeùitùaùY.
+{END IF}
+
+{IF}'{VAR 1}'="Y"
+     {ASSIGN}2 GREAT!
+{ELSE}
+     {ASSIGN}2 TOUGH!
+{END IF}
+
+{;}SECTIONù3ù--ùUsingù{LOOK}ùtoùcreateùaùloopùthat
+     continuesùuntilùtheùuserùpressesùaùkey
+{LABEL}loop
+     {PROMPT}
+        {;}Turnùonùtheùsuperscriptùattributeù(redùonùcyan)ùand
+           displayùaùmessage
+        {^Q}{^N}{^E}
+        {^P}#{Del to EOL}   ÛßßßßßßßßßÛ
+        {^P}#{Del to EOP}   Ýù{VAR 2}ùÞ
+        {^P}#{^M}           ÛÜÜÜÜÜÜÜÜÜÛ
+     
+     {WAIT}2
+     {PROMPT}
+        {;}TurnùOFFùtheùsuperscriptùattributeùandùdisplay
+           theùsameùmessageù--ùproducesùaùflashingùeffect.
+        {^O}{^E}{^]}
+        {^P}#{Del to EOL}   ÛßßßßßßßßßÛ
+        {^P}#{Del to EOP}   Ýù{VAR 2}ùÞ
+        {^P}#{^M}           ÛÜÜÜÜÜÜÜÜÜÛ
+     
+     {WAIT}2
+     {;}Ifùtheùuserùpressedùaùkey,ùexitùtheùloop.
+     {LOOK}3
+     {IF EXISTS}3
+        {GO}end
+     {END IF}
+{GO}loop
+{LABEL}end
+{DISPLAY OFF}{DISPLAY ON}
+

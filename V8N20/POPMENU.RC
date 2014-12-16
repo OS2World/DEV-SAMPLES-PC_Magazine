@@ -1,0 +1,107 @@
+/*----------------------------
+   POPMENU.RC resource script
+  ----------------------------*/
+
+#include <os2.h>
+#include "popmenu.h"
+
+MENU ID_NORMAL
+     {
+     SUBMENU "~File",              -1
+          {
+          MENUITEM "~New",              IDM_NEW
+          MENUITEM "~Open",             IDM_OPEN
+          MENUITEM "~Save",             IDM_SAVE
+          MENUITEM "Save ~As",          IDM_SAVEAS
+          MENUITEM SEPARATOR
+          MENUITEM "A~bout PopMenu...", IDM_ABOUT
+          }
+     SUBMENU "~Edit",              -1
+          {
+          MENUITEM "Cu~t",              IDM_CUT
+          MENUITEM "~Copy",             IDM_COPY
+          MENUITEM "~Paste",            IDM_PASTE
+          MENUITEM "C~lear",            IDM_CLEAR
+          }
+     SUBMENU "~Options",           -1
+          {
+          SUBMENU "~Color",        -1
+               {
+               MENUITEM "~Red",         IDM_RED
+               MENUITEM "~Green",       IDM_GREEN
+               MENUITEM "~Blue",        IDM_BLUE
+               }
+          SUBMENU "~Size",         -1
+               {
+               MENUITEM "~Small",       IDM_SMALL
+               MENUITEM "~Medium",      IDM_MEDIUM
+               MENUITEM "~Large",       IDM_LARGE
+               }
+          SUBMENU "S~peed",        -1
+               {
+               MENUITEM "~Slow",        IDM_SLOW
+               MENUITEM "~Medium",      IDM_MEDSPEED
+               MENUITEM "~Fast",        IDM_FAST
+               }
+          }
+     }
+
+MENU ID_POPUP
+     {
+     SUBMENU "",                   IDM_POPUP
+          {
+          SUBMENU "File",               -1
+               {
+               MENUITEM "New",               IDM_NEW
+               MENUITEM "Open",              IDM_OPEN
+               MENUITEM "Save",              IDM_SAVE
+               MENUITEM "Save As",           IDM_SAVEAS
+               MENUITEM SEPARATOR
+               MENUITEM "About PopMenu...",  IDM_ABOUT
+               }
+          SUBMENU "Edit",               -1
+               {
+               MENUITEM "Cut",               IDM_CUT
+               MENUITEM "Copy",              IDM_COPY
+               MENUITEM "Paste",             IDM_PASTE
+               MENUITEM "Clear",             IDM_CLEAR
+               }
+          SUBMENU "Options",            -1
+               {
+               SUBMENU "Color",         -1
+                    {
+                    MENUITEM "Red",          IDM_RED
+                    MENUITEM "Green",        IDM_GREEN
+                    MENUITEM "Blue",         IDM_BLUE
+                    }
+               SUBMENU "Size",          -1
+                    {
+                    MENUITEM "Small",        IDM_SMALL
+                    MENUITEM "Medium",       IDM_MEDIUM
+                    MENUITEM "Large",        IDM_LARGE
+                    }
+               SUBMENU "Speed",         -1
+                    {
+                    MENUITEM "Slow",         IDM_SLOW
+                    MENUITEM "Medium",       IDM_MEDSPEED
+                    MENUITEM "Fast",         IDM_FAST
+                    }
+               }
+          }
+     }
+
+DLGTEMPLATE IDD_ABOUT
+     {
+     DIALOG "", 0, 32, 32, 200, 100,, FCF_DLGBORDER
+          {
+          CTEXT "PopMenu"                             -1, 10, 76, 180, 8
+          CTEXT "PC Magazine, Vol. 8 No. 20"          -1, 10, 52, 180, 8
+          CTEXT "(c) 1989, Ziff Communications Co."   -1, 10, 42, 180, 8
+          CTEXT "Programmed by Charles Petzold, 8/89" -1, 10, 32, 180, 8
+          DEFPUSHBUTTON "OK"             DID_OK, 80, 8, 40, 16, WS_GROUP
+          }
+     }
+
+
+
+

@@ -1,0 +1,108 @@
+       COMPUTER LIBRARY PC MAGAZINE REVIEWS INDEX
+
+The COMPUTER LIBRARY PC MAGAZINE REVIEWS INDEX is a biannual
+index to the hundreds of software and hardware reviews and
+evaluations that appear in PC Magazine.
+
+The database is available in three versions:
+   PCM.EXE - Reviews from January 1988 through June 13, 1989
+   PCM88.EXE - Reviews from January through December 1988
+   PCM89A.EXE - Reviews form January 1989 to June 13, 1989
+all three databases require PCSRCH.EXE in order to run.  These
+four files are self-extracting archives, which means when you run it,
+the program will uncompress and unbundle itself.
+
+The PC Magazine Reviews Index is a small part of the Computer
+Library Computer Periodicals Database, distributed by Ziff
+Communications Company monthly on CD-ROM and on-line through
+PC Magazine's PC MagNet.
+
+The CD-ROM version the Computer Periodicals Database contains
+an entire year's worth of full text articles and abstracts from
+over 125 computer and technology-related periodicals published
+in the United States and Great Britain, including PC Magazine.
+The on-line version contains two year's worth of articles and
+abstracts.
+
+The software used to retrieve citations from the Reviews Index
+is a fully functional copy of Lotus Development Corporation's
+BlueFish(R) Searchware -- the same software utilized in the
+Computer Library Computer Periodicals Database on CD-ROM.  It
+allows subscribers to easily navigate through the more than
+52,000 articles and abstracts available to them each month.
+
+If you would like more information about the Computer Periodicals
+Database on CD-ROM please call: 212-503-4400.
+
+INSTALLATION INSTRUCTIONS & SYSTEM REQUIREMENTS
+-----------------------------------------------
+
+To install the Computer Library PC Magazine Reviews Index:
+
+1.  Create a directory on your hard disk called CLIB.  You
+can do this by typing MD CLIB at the DOS prompt and pressing
+<Enter>.
+
+2.  Copy the PCM.EXE (or PCM88.EXE, or PCM89A.EXE) file into the 
+CLIB directory, along with PCSRCH.EXE.
+
+3.  Be sure you have at least 2,000,000 bytes free on your
+hard disk, 512K RAM installed, and DOS 3.1 or higher.  You
+can check the available space on your hard disk by typing
+CHKDSK at the DOS prompt and pressing <Enter>.  Check the
+DOS version by typing VER at the DOS prompt and press <Enter>.
+
+4.  Be sure that the FILES and BUFFERS in your CONFIG.SYS file
+both equal at least 20.  You can see the contents of your
+CONFIG.SYS file by typing TYPE CONFIG.SYS at the DOS prompt
+while in the root directory of the hard disk that you boot
+from.
+
+5.  Go to the CLIB directory on your hard disk by typing
+CD CLIB at the DOS prompt and pressing <Enter>.
+
+6.  Run the self-extracting archive PCM files one at a time at the
+DOS prompt and press <Enter>.  For example, type PCSRCH
+and press <Enter> and the Lotus Searchware files will be
+extracted into your CLIB directory.
+
+7.  After you have extracted all of the database and 
+Searchware files from the downloaded self-extracting archive files,
+delete the downloaded self-extracting archives from the CLIB directory
+by typing, DEL PC*.EXE at the DOS prompt and pressing <Enter>.
+
+8.  Print the PCM.DOC file by typing COPY PCM.DOC PRN
+at the DOS prompt and pressing <Enter>.
+
+9.  To start the Computer Library PC Magazine Reviews Index,
+go to the CLIB directory, type CL at the DOS prompt
+and press <Enter>.
+
+COMPUTER LIBRARY PC MAGAZINE REVIEWS INDEX - TERMS AND CONDITIONS
+-----------------------------------------------------------------
+PC Magazine Reviews Index files contain databases and Searchware(TM)
+owned by Ziff Communications Company (Ziff) and Lotus Development
+Corporation (Lotus), respectively, and are prepared as a service
+to readers of PC Magazine.  You may not commercially distribute
+these files, the Searchware(TM) module or the database reproduced
+in these files or use any of them as a component of or as a basis
+for a database prepared for commercial distribution.  You are
+also prohibited from using the Searchware(TM) module with any
+database other than the database provided in these files.
+
+Except as specifically provided above, neither Ziff nor Lotus
+makes any warranty or representation, either expressed or
+implied, with respect to the Searchware(TM) module or the
+database reproduced in these files, including, but not limited to,
+their quality, performance, merchantability or fitness for a
+particular purpose and shall have no liability or responsibility
+to any recipient with respect to any liability, loss, or damage
+arising, directly or indirectly, out of the use of these files, the
+Searchware(TM) module or database contained in these files,
+including, but not limited to, those incurred as a result of lost
+profits or revenue or other incidental or consequential damages.
+
+Database Copyright (C) 1988, 1989 Ziff Communications Company.
+Searchware(TM) Copyright (C) 1986, 1989 Lotus Development
+Corporation. All rights reserved.  All rights of reproduction in
+other media reserved.

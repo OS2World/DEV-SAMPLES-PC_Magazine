@@ -1,0 +1,56 @@
+
+{;}STATEùmacroù--ùdisplaysùvalueùofù{STATE}ùvariable~
+{;}=================================================~
+{;}{VARù1}ùisùusedùtoù"countùdown"ùfromù1024ùtoù0,
+     halvingùitsùvalueùwithùeachùrepetition.~
+{;}{VARù2}ùaccumulatesùaùkindùofùbinaryùstringùthat
+     correspondsùtoù{STATE}ù--ùaùspaceùforùaùzeroùbit,
+     aùblockùforùaùoneùbit~
+{;}Toùcreateùtheùspecialùcharactersùinùthisùmacro,ùhold
+     downùtheùALTùkey,ùtapùoutùtheùASCIIùnumberùonùtheùnumeric
+     keypad,ùandùthenùreleaseùtheùALTùkey.~
+
+{ASSIGN}2~~         {;}Clearùvariableù2~
+{ASSIGN}1~1024~     {;}Setùtoùhighestùbit-valueùofù{STATE}~
+{LABEL}loop~
+     {IF}{STATE}&{VAR 1}~     {;}IFùtheùbitùisùset,~
+        {ASSIGN}2~{VAR 2}ş~   {;}ùùaddùaùblockùtoùVARù2~
+                              {;}blockùisùASCIIù254~
+     {ELSE}
+        {ASSIGN}2~{VAR 2}ù~   {;}Ifùnot,ùaddùaùspace~
+     {END IF}
+     {ASSIGN}1~{VAR 1}/2~     {;}getùnextùlowerùbit-value~
+     {IF}{VAR 1}=0~           {;}continueù'tilù0~
+        {GO}done~
+     {END IF}
+{GO}loop~
+{LABEL}done~
+
+{PROMPT}{^R}
+     {;}TheùdisplayùusesùtheùfollowingùASCIIùcharacters:~
+     {;}ùù°=176ùù³=179ùùÄ=196ùùÀ=192ùù=16~
+     {;}{^P}ùisùaùcursorùpositioningùcommand.ùùTheù{^E}ùin
+        eachùlineùsaysùtoùstartùinùtheùfifthùcolumn.ùùForùthe
+        rows,ùweùstartùwithù{^A}.ùùHowever,ùWordPerfect
+        interpretsùsomeùofùtheùcontrolùcharactersùasùcommands,
+        e.g.ù{Home}ùorù{Enter}.~
+{^P}{^E}{^A}         °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+{^P}{^E}{^B}         °ù{^S}{VAR 2}{^R}ùùùùùùùùùùùù{STATE}°
+{^P}{^E}{^C}         °ù³³³³³³³³³³ÀÄùDocù1ùactiveùùùùùùùù°
+{^P}{^E}{^D}         °ù³³³³³³³³³ÀÄÄùDocù2ùactiveùùùùùùùù°
+{^P}{^E}{^E}         °ù³³³³³³³³ÀÄÄÄùMainùeditingùùùùùùùù°
+{^P}{^E}{^F}         °ù³³³³³³³ÀÄÄÄÄùOtherùeditingùùùùùùù°
+{^P}{^E}{^G}         °ù³³³³³³ÀÄÄÄÄÄùMacroùdefinitionùùùù°
+{^P}{^E}{Home}       °ù³³³³³ÀÄÄÄÄÄÄùMacroùexecutionùùùùù°
+{^P}{^E}{Tab}        °ù³³³³ÀÄÄÄÄÄÄÄùMergeùactiveùùùùùùùù°
+{^P}{^E}{Enter}      °ù³³³ÀÄÄÄÄÄÄÄÄùBlockùactiveùùùùùùùù°
+{^P}{^E}{Del to EOL} °ù³³ÀÄÄÄÄÄÄÄÄÄùTypeoverùactiveùùùùù°
+{^P}{^E}{Del to EOP} °ù³ÀÄÄÄÄÄÄÄÄÄÄùRevealùcodesùactiveù°
+{^P}{^E}{^M}         °ùÀÄÄÄÄÄÄÄÄÄÄÄùYes/noùactiveùùùùùùù°
+{^P}{^E}{^N}         °°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+{^S}
+~
+{CHAR}9~~                   {;}waitùforùaùkeypress~
+{DISPLAY OFF}{DISPLAY ON}   {;}restoreùtheùdisplay~
+
+

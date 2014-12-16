@@ -1,0 +1,92 @@
+®RHA®PT2¯®LM10¯®RM75¯UTILITIES o Pete Maclean              p.  ®PN¯  of ®FP¯ 
+Vol. 8, No. 19                      Filename:  ®VA$FI¯
+
+
+¯®PT2¯®LM20¯®RM50.5¯®AL0¯®LS1¯®TS23¯
+®LM0¯®RM55¯®IP0,12¯®TS12,15,35,42C,47C¯®PT4¯®NJ¯
+®MDRV¯®MDNM¯®FR¯1STCLASS and COURIERS
+Commands
+®FL¯®LDÄ¯
+Pete Maclean®LD ¯November 14, 1989 (Utilities)
+®LDÄ¯
+
+®MDBO¯®LS2¯Purpose:®MDNM¯	1STCLASS helps you manage your MCI mail as well as send and receive ASCII and/or binary files. It requires the use of COURIERS, a 1.5KB TSR serial port driver program, and a customized script file, 1STCLASS.CSF.®LS1¯
+
+®MDBO¯Format:®MDNM¯®PT3¯	COURIERS
+	1STCLASS
+
+®MDBO¯®LS2¯®PT4¯®MDBO¯Remarks:®MDNM¯	®MDBO¯Troubleshooting Tips:®MDNM¯ If MCI finds faults with a message 1STCLASS uploads, an explanation will be displayed. Such diagnostics are not written to MAIL.IN but, if you lose the display, you can always find it in 1STCLASS.LOG.
+
+	The most common problem is misformatted envelopes.  For a message to be delivered, the subscriber must be exactly identified.  If you address a message to a name that's not unique, the IDs of all subscribers with the name are listed:  
+
+	®PT8¯At least one problem with envelope 
+	608 More than 1 MCI Mail user matches recipient information
+	MCI ID   Name         Organization       Location
+	000-0000 Zoltan Shah  Whizzo Chocolate   New York, NY
+	111-1111 Zoltan Shah  Sunshine Desserts  Fresno, CA®PT2¯
+
+	Select the right one and edit your message to include the ID.  Remember that the name should be separated from the ID by a slash, as in ®PT1¯Zoltan Shah/111-1111®PT2¯.  In fact, an ID alone is a perfectly acceptable address.
+	
+	If MCI objects to something in the envelope of a message, you may receive a repsonse such as:
+
+	®PT8¯At least one problem with envelope 
+	610 Improper information in the envelope 
+	SUBJECT:  1STCLASS
+	This text is part of the message...®PT2¯
+
+	In this case, the blank line needed to terminate the envelope was missing.  Other causes might be a mistyped keyword on an envelope line or the appearance of lines in an order that MCI cannot handle.
+
+	Some errors offend MCI so much that it stops responding, 
+	such as a message with two or more addresses on a line. 
+	A message may be addressed to any number of people, but each address must be on a separate To: or Cc: line.
+
+	And, if you receive either a Checksum error or	Malformed data message, you can be almost certain that a transmission error has ruined your session.  Just try again.
+	
+	®MDBO¯Tips For Using Our COURIERS Utility®MDNM¯
+
+	The general format follows that of BIOS calls. The caller places a function code in AH, a COM-port number (1 - 4) in AL and parameters as necessary in AX, BX and CX, then executes an INT 14H instruction. COURIERS returns result codes in AX.
+
+	®MDBO¯Function 80h:®MDNM¯ Check if COURIERS is loaded. If COURIERS is loaded it returns 232 (decimal) in AH; otherwise the BIOS returns some indeterminable value. Any program using COURIERS should start by verifying that COURIERS is loaded and asking the user to load it if not  -- just as 1STCLASS does. (AL is ignored in this case.)
+
+	®MDBO¯Function 81h:®MDUL¯®MDNM¯ Check if port is busy. COURIERS returns a code in AH: 2 means that the port does not exist; 1 means that the port exists and another program is using it; 0 means that the port is available.
+	
+	COURIERS reports code 1 only if another program is using the port via COURIERS' own services. There would be no way to tell with any confidence if another program were using a port in some other way. 1STCLASS skips this nicety and seizes the port it is told to use.
+
+	®MDBO¯Function 82h:®MDNM¯ Configure a port. Before doing any I/O, a program should configure the port with this function. The line speed in bits per second is passed in BX and CX contains a bit vector of various options. Only the low two bits are currently assigned: Bit 0001h tells COURIERS to handle input flow control; Bit 0002h tells COURIERS to handle output flow control.
+	
+	Input flow control means that COURIERS will send Control-Ss and Control-Qs to regulate the flow of incoming characters. Output flow control means that COURIERS will regulate its character transmission according to Control-Ss and Control-Qs that it receives.
+	
+	In addition bit 0004h is reserved for requesting COURIERS to operate the line under the X.PC protocol. This is not yet implemented.
+	
+	When configuring the port, COURIERS sets it to send and receive eight-bit characters with one stop bit and no parity. There are currently no alternatives.
+
+	®MDBO¯Function 83h®MDNM¯:  Start input. This function provides COURIERS with the specifications of an area of memory that COURIERS can use as a circular buffer for incoming characters. ES:BX point to the buffer and CX contains its length in bytes. If input flow control is requested then the buffer should be at least 128 bytes. The largest allowable buffer is 65,536 bytes, the size of a memory segment. The address provided for the buffer must be such that every byte in it can be addressed using the segment provided in ES. COURIERS does not check for this, however, and if provided, say, with a buffer address of 1F1D:F000 and a size of 40,000 it would fail rather horribly.
+	
+	After input is initiated with this function, it continues until the port is deconfigured (function 8D). It is very important that a program deconfigure a port after using it or else COURIERS could be left stuffing stray characters into an area of memory being used by another program for some completely different purpose. And that could lead to horrible bugs.
+
+	®MDBO¯Function 84h®MDNM¯:  Read a character. This function requests that COURIERS extract the next character from its input buffer and return it to the program. On returning, COURIERS sets the ZF processor flag to indicate whether or not input was available. ZF = 1 means that no input was available. If ZF = 0 then COURIERS also returns a character in AL along with a copy of the status bits read from the COM port in AH.
+	Note that there is no way to get COURIERS to wait for incoming data. If a program just wants to spin its wheels until a character shows up it should invoke this function in a loop until ZF is returned as zero.
+
+	In most cases it is safe to ignore the status bits. The only one that might possibly have meaning is the status bit that denotes a framing error on the received character. Note, however, that COURIERS adds one status bit of its own, the highest or sign bit, to indicate an input buffer overflow. If input flow control is turned on and operating correctly, and the buffer is sufficiently large, an overflow should never occur.
+
+	®MDBO¯Function 85h®MDNM¯:  Flush pending input. COURIERS discards any characters waiting to be read from its input buffer.
+
+	®MDBO¯Function 86h®MDNM¯:  Start output. COURIERS initiates the transmission of a sequence of characters. ES:BX points to the data and CX contains the byte count. COURIERS returns to the calling program once the transmission is under way; it does not wait until transmission is complete.
+	The same caveats about buffer addressing given for the input function (84h) apply equally here.
+
+	®MDBO¯Function 87h®MDNM¯:  Output status. COURIERS returns the number of characters awaiting transmission in AX. It is only safe to initiate another transmission when the returned value is zero. The ZF flag is also set to indicate if AX is zero or not.  To wait for completion of a transmission a program should call function 86 and then repeatedly call 87 until a zero value is returned.
+
+	®MDBO¯Function 88h®MDNM¯:  Abort output. COURIERS terminates any transmission in progress.
+
+	®MDBO¯Function 89h®MDNM¯:  Transmit a single character. COURIERS transmits the character passed in CL. This function may be called repeatedly with no tests or checks between calls. It would be used typically by a program such as a terminal emulator.
+
+	®MDBO¯Function 8Ah®MDNM¯:  Send BREAK. COURIERS transmits a BREAK condition for approximately 385 milliseconds. Note that COURIERS does not detect receipt of a BREAK.
+
+	®MDBO¯Function 8Bh®MDNM¯:  (Not used).
+
+	®MDBO¯Function 8Ch®MDUL¯®MDNM¯:  Set speed. COURIERS resets the speed of the port. The caller provides this speed in BX. 1STCLASS uses this function to change speeds when a connection is completed at a speed other than that for which the modem was primed.
+
+	®MDBO¯Function 8Dh®MDNM¯:  Deconfigure port. COURIERS stops input on the port and turns off all interrupts. As discussed above, it is very important that a program invoke this function upon completing use of a COM port.
+	A summary of the functions with the registers and returned values is given in Figure A. -- 
+
+

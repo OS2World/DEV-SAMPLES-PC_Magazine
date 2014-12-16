@@ -1,0 +1,14 @@
+@ECHO OFF
+REM CHG_SET3.BAT
+SET V$=
+:LOOP
+IF NOT %1!==%M%! SET V$=%V$%%1;
+SHIFT
+IF NOT %1!==! GOTO LOOP
+%V@%=%V$%
+SET M=
+SET P=
+SET V$=
+%V@%
+SET V@=
+

@@ -1,0 +1,31 @@
+C	"Connecting to MCI Mail via TYMNET^M^J"
+C	"(Press the Escape key if you need to abort the session.)^M^J"
+P  1	"9600"			Your COM port number and speed go in this line
+T	"ATZ^M"
+R  5	"OK^M^J"
+D  1
+T	"ATE1^M"
+R	"OK^M^J"
+T	"ATDT###-####^M"	Your local TYMNET number goes in this line
+R 40	"CONNECT"
+B
+D  8
+T	"A"
+R 15	":"
+T	"^H^RMCILINK^M"
+R 10	"name:"
+T	"username"		Your username goes on this line
+T	"/batch:1ST/"
+T	"password"		Your password goes on this line
+T	"^M"
+R 20	"COM^M^J"
+M
+D  1
+T	"+++"
+R 10	"OK"
+D  1
+T	"ATH^M"
+R 10	"^M^J"
+T	"ATZ^M"
+C	"You will find any new mail in file MAIL.IN"
+

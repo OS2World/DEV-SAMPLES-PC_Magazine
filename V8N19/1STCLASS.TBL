@@ -1,0 +1,38 @@
+
+TABLE A (in SIDEBAR)
+Title:  1STCLASS's Command Set
+
+
+P	Specifies COM port (1, 2, 3 or 4) for num and the line speed for 
+	"str".  There are no defaults for these parameters.  A P command 
+	must appear in every script before any T or R command is listed. 
+	For example: P 2 "1200"
+
+C	No num; used as "str", writes a comment to the screen.  For 
+	example: C "This is a comment ^M^J"
+
+D	Delays (pauses) for num seconds; no "str", no default.  For 
+	example: D 15
+
+T	No num; transmits a string ("str").  See B for example.
+
+R	Waits num seconds (timeout) for a specified "str" to be received.  
+	The default num value of 0 tells 1STCLASS to wait forever.  The 
+	user can abort the script by pressing Esc.  See B for example.
+
+B	No num, no "str".  The B command resets the bps rate of a multi-	
+	speed modem.  The following sequence, for example, would dial 
+	up, wait 40 seconds, then change your modem speed on the basis 
+	of the "CONNECT" message:
+	
+	T "ATDT123-4567^M
+	R 40 "CONNECT"
+	B
+
+M	No num, no "str"; enters Mail Link processing in "master" mode.  
+	Any script file for calling MCI must contain an M command; it 
+	marks the point at which 1STCLASS should switch into a Mail Link 
+	session.  Once that session terminates, execution of the script file 
+	continues.
+
+

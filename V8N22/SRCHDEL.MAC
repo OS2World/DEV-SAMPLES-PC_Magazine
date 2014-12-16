@@ -1,0 +1,1 @@
+®SET delsty = ?Style to be deleted.¯®SET prompt = ?Confirm deletions Y/N¯®IF prompt = "n"¯®SET prompt = "N"¯®endif¯®IF prompt = "y"¯®SET prompt = "Y"¯®endif¯<Ctrl PgUp><Ctrl Esc>fes®delsty¯<Tab>d<Enter>®WHILE FOUND¯®IF prompt = "Y"¯®SET delet = ?Delete Y/N¯®IF delet="y"¯®SET delet="Y"¯®endif¯®IF delet="Y"¯<del>®ELSE¯<Right>®ENDIF¯®ELSE¯<Del>®ENDIF¯<Left><Shift F4>®ENDWHILE¯

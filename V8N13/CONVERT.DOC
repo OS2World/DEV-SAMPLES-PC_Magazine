@@ -1,0 +1,49 @@
+
+CONVERT.COM
+Command
+
+Michael Mefford
+July, 1989 (Utilities)
+
+
+Purpose:	Simultaneously displays ASCII codes or whole numbers between 0
+and 65,535 in their hexadecimal, decimal, octal, and binary equivalents;
+especially useful in translating printer, modem, or EGA monitor Escape sequences
+and set-up strings from one number base to another.
+
+Format:	CONVERT number[-number][base] | "character(s)"
+
+Remarks:	Either a single number or a number-number range may be input to
+CONVERT for multiple number base display.  Decimal input is assumed unless
+otherwise indicated by adding b (binary), o (octal), or h (hexadecimal) to the
+number(s).  An ASCII code to be converted must be placed within double quotes. 
+Control codes (e.g. Ctrl-A) may be entered normally at the keyboard (within
+double quotes) with the exception of the Escape character.  To display the
+equivalents (including the ASCII left-arrow graphic) of the Escape character,
+enter CONVERT 27.
+
+	When large numbers are converted, the 2-byte sequence displayed within
+quotes in the right-hand column as the ASCII "equivalent" should not be used in
+translating set-up strings.  It represents the individual byte values, not the
+value of the combination.  Note, too, that in this display, decimal 0 (null), 32
+(space), and 255 (blank) all appear as blanks.
+
+	The output from CONVERT may be redirected to a printer or to file, so
+that a multi-line table of values may be created.  When redirection is used,
+however, the ASCII equivalent normally shown in the right-hand column is
+dropped.
+
+	Available for downloading from PC MagNet (see the CONVERT by Modem
+sidebar in the main article), CONVERT.COM is already compiled and ready to run. 
+As an alternative, CONVERT.COM can be created from either of two program files
+that are printed in the article and are also available for downloading from PC
+MagNet.  CONVERT.BAS will automatically create CONVERT.COM when run once in
+BASIC.  To create CONVERT.COM from the CONVERT.ASM source code requires use of a
+macro assembler (IBM or Microsoft, Version 2 or later) and the following
+commands:
+
+MASM CONVERT;
+LINK CONVERT;
+EXE2BIN CONVERT CONVERT.COM;
+
+®MDNM¯

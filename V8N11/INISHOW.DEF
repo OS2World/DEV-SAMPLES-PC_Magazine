@@ -1,0 +1,10 @@
+;------------------------------------
+; INISHOW.DEF module definition file
+;------------------------------------
+
+NAME           INISHOW   WINDOWCOMPAT
+
+DESCRIPTION    'Display OS2.INI Information (c) 1989, Ziff Communications Co.'
+PROTMODE
+
+

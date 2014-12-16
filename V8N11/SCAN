@@ -1,0 +1,27 @@
+
+You can relate the customers and orders databases on the
+cust_id field with the following code:
+
+Select 1                                && open work area
+Use customers                           && open parent
+Use orders Order order_id In 2          && open child in area 2
+Set Relation To order_id Into orders    && link them
+Set Skip To orders                      && set for multiples
+Go Top                                  && move record pointer
+
+
+You can relate the customer database to several different
+databases (children) on the cust_id field with the following
+code:
+
+Select 1                                && open work area
+Use customers                           && open parent
+Use orders Order order_id IN 2          && open child1 in work area 2
+Use contacts Order cont_id IN 3         && open child2 in work area 3
+Use calls Order call_id IN 4            && open child3 in work area 4
+Set Relation To order_id Into orders, cont_id Into contacts,;
+    call_id Into calls                  && link to parent
+Go Top                                  && move record pointer
+
+
+

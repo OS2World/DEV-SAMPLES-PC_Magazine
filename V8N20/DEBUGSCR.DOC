@@ -1,0 +1,51 @@
+DEBUGSCR
+Command
+
+Michael Mefford  November 28, 1989 (Utilities)
+
+
+Purpose: To convert binary files into ordinary ASCII text files, which can be
+         transmitted over MCI Mail and similar services, and reconverted to the
+         ir original binary form using the DOS DEBUG command.
+
+Format:	DEBUGSCR filespec [/N]
+	DEBUG < filename
+
+Remarks: Use the first command shown above to create a DEBUGSCR script file 
+         from a binary file (.COM, .EXE, .WK1, etc.) named in the filespec. 
+         An alternate drive and/or path may be specified.  The script file is
+         automatically given an .SCR extension and is placed in the same 
+         directory as the original file.  The script file consists of an ASCII
+         hex representation of the original binary values, together with the 
+         commands DEBUG needs to recreate the original file.  The script file 
+         ends with appropriate instructions to the recipient.  These 
+         instructions are ignored by DEBUG and can be suppressed altogether 
+         by using the optional /N switch.
+
+	 The .SCR file can be edited with a word processor before transmission
+         to append additional information, such as how to use the utility being
+         sent.  The .SCR file must then be resaved in pure ASCII form.  
+         Similarly, before he reconverts the .SCR file with DEBUG.COM, the 
+         recipient must edit out any header prefixed to the file by the 
+         communications service (for example, the TO: heading added by MCI). 
+         After resaving in ASCII, the recipient simply uses the second command
+         line shown above, supplying the desired final filename.
+
+         DEBUGSCR.BAS will automatically create DEBUGSCR.COM when run once in 
+         BASIC.  To assemble the program from its source code listing requires 
+         use of a macro assembler (IBM or Microsoft, Version 2 or later) and the
+         following commands:
+ 
+    	MASM DEBUGSCR;
+	LINK DEBUGSCR;
+	EXE2BIN DEBUGSCR DEBUGSCR.COM;
+
+Note:   DEBUGSCR will not work with files over 60K.  
+
+	DEBUG.COM will not write a filename with an .EXE extension to disk.  
+        DEBUGSCR therefore strips this extension and appends a warning to the 
+        recipient that after using DEBUG he must rename the file to include its
+        proper .EXE extension.  
+
+	
+

@@ -1,0 +1,12 @@
+;-----------------------------------
+; TAQUIN.DEF module definition file
+;-----------------------------------
+
+NAME           TAQUIN    WINDOWAPI
+
+DESCRIPTION    'Jeu de Taquin (c) 1989, Ziff Communications Co.'
+PROTMODE
+HEAPSIZE       1024
+STACKSIZE      8192
+EXPORTS        ClientWndProc
+               AboutDlgProc

@@ -1,0 +1,20 @@
+ECHO OFF
+REM VOLTEST.BAT
+IF "%2"=="" GOTO BadParams
+FOR %%v IN (A: B: C: a: b: c:) DO IF %1==%%v GOTO OK
+GOTO BadParams
+:OK
+VOL %1 | FIND "%2" > VOLFILE1.TXT
+COPY VOLFILE1.TXT VOLFILE2.TXT > NUL
+IF NOT EXIST VOLFILE2.TXT GOTO ERROR
+ERASE VOLFILE1.TXT
+ERASE VOLFILE2.TXT
+ECHO The disk in drive %1 IS named "%2"
+GOTO End
+:ERROR
+ECHO The disk in drive %1 IS NOT named "%2"
+GOTO End
+:BadParams
+ECHO SYNTAX: "VOLTEST d: VOLUMELABEL"
+ECHO Drive d: may be A:, B:, or C:
+:End

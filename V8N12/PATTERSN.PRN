@@ -1,0 +1,8 @@
+        A        B        C        D        E
+1   \e       {Recalc NEXT}
+2   NEXT     {Contents ENTRY,$A$1,240,117}
+3            {Let ENTRY,@TRIM(ENTRY)}
+4            {ENTRY}{Edit}
+5
+6   ENTRY
+7

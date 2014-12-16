@@ -1,0 +1,18 @@
+To: Pete Maclean/263-7215
+Cc: Susan Smith
+Subject: MCI Mail Utility
+
+This file is a template for creating a message destined to one or more MCI
+Mailboxes.
+
+To use it:
+	o    Copy this file to <something>.XXX then edit as follows:
+	o    Change the names and ids on the To: and Cc: lines.
+	o    Additional To: and Cc: lines can be inserted as needed, one
+		per recipient.
+	o    Alternatively the Cc: line can be deleted if not needed.  Any
+		message must, however, have at least one To: line.
+	o    Edit the Subject.
+	o    Replace this text with your message.  Add attachment commands
+		at the bottom.
+

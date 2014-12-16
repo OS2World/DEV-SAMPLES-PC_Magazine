@@ -1,0 +1,117 @@
+Command
+
+Ron Smith October 31, 1989 (Utilities)
+
+
+Purpose:Combines information from full-screen displays and user keyboard input
+        to create batch and other program input files under the control of a
+        template file. Full screen editing facilities are provided for displays
+        of up to 300 lines and up to 100 input fields.
+
+Format:MENU [/D/E/N] screen template out1 [out2 ...]
+
+Remarks:The screen operand is the file containing the display.  A screen file
+        is created by entering MENU /E ,, screen and can later be edited by
+        entering MENU /E screen,, screen.  The commas are used to replace
+        omitted file operands.
+
+       	The template is a file that controls the format of the output files.
+        A template file is created with any ASCII text editor and contains
+        constant data and instructions for copying information entered on the
+        display.
+
+	The out files are constructed from the information on the display and
+        in the template files.  Up to 64 out files may be created.
+
+	The optional /D switch is used to display any screen or other ASCII file
+        of up to 300 lines.  If the screen file is not specified the DOS
+        standard input file is assumed.  The number of screen columns and rows
+        is automatically determined and all sizes of displays up to 255 x 255
+        are supported.
+
+	The /N (No-restore) option is used to inhibit MENU from saving/restoring
+        the original DOS screen contents when exiting.  This switch is normally
+        invoked when loading programs that paint their own opening screen.
+
+Template File:	The template file contains the instructions for creating the
+                output files.  Each character in the template file is copied
+                directly to the current output file (initially out1) except for
+                the following editing characters.
+
+[	Start pattern replacement.  If the form is used,information is extracted
+        from the nnn th input field on the display according to the following
+        pattern characters.
+]	Copy the rest of the input field.
+?	Copy the next character from the input field.
+=	Copy the rest of the current display line of the input field.
+|	Skip to the ], ignoring the rest of the pattern if there are no more
+        characters in the input field.
+\	Copy the next pattern character even if it is one of the above.
+
+All other characters in the pattern are copied without change.  If anything 
+other than a decimal number follows the [, time and date substitution is 
+performed.  All characters except the following pattern characters are copied
+directly to the output file.
+
+\	Copy the next character even if a pattern character.
+]	Terminate pattern processing.
+MM	Insert the current month (01 to 12).
+DD	Insert the current day (01 to 31).
+CC	Insert the current century (19 or 20).
+YY	Insert the current year (00 to 99).
+MN	Insert the 3-character month abbreviation.
+DW	Insert the 3-character day-of-week abbreviation.
+hh	Insert the current hour (00 to 23).
+mm	Insert the current minute (00 to 59).
+ss	Insert the current second (00 to 59).
+
+{	Copy information from a constant field on the display to the output 
+        file.  If the form {nnn} is used, the nnn th constant field is copied.
+        If the form {nnn} is used, the nnn th input field is assumed to be a
+        decimal number and that number selects the constant field.  For example,
+        {[1]} will extract the value in the first input field.  If that value
+        is 5, the fifth constant field is used.
+<	Select a new output file.  The form is nnn.  All further output will be
+        sent to the nnnth output file.  All output files remain open until the
+        end of processing so you may switch back and forth among them.
+\	Send the next character from the template file to the output file even
+        if it one of the above control characters.
+
+Menu Keys: During display editing certain keys have a special effect.  The 
+           cursor arrow keys including Pg Up, Pg Dn, Backspace, and Del operate
+           normally, save that MENU always tries to place the cursor in an input
+           field.  The other keys are:
+
+Tab	 Move to start of next input field.
+Shift Tab  Move to start of current input field or to start of previous 
+           field.
+Home	Same as Shift Tab.
+End	Move to end of current input field.
+Ins	Toggle insert mode.
+Ctrl-Home	Move to start of display area.
+Ctrl-End	Move to end of display area.
+Enter	Move to next line of input field.  If in last line, move to next input
+        field.  If in last field, exit.
+Ctrl Enter	Exit
+Esc	Terminate MENU and do not create output files.
+F1	Help.  Display key definitions.
+
+The following additional keys are defined only when using MENU /E to create or
+edit a screen file.
+
+F2	The current cursor position is to be the end of the display area.
+F3	Display the start and end of each input field and constant field with
+        [] and {} respectively.  For single character fields,[] and {} are 
+        displayed.
+F4	Delete an input field or constant field.  The cursor must be on the 
+        start of the field.
+F5	Insert a start of constant field.
+F6	End of constant field.
+F7	Insert a start of an input field.  
+F8	End of input field.
+F9	Change color attributes.  The new colors are applied using F10.
+F10	Apply color attributes to cursor location and advance cursor.
+UTILITIES  Jeff Prosise               
+
+
+

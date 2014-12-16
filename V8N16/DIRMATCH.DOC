@@ -1,0 +1,64 @@
+DIRMATCH.COM
+Command
+
+Michael J. Mefford                    September 26, 1989 (Utilities)
+
+
+Purpose:	To display two scrollable, alphabetized, directory listings 
+side-by-side, with the more recent of matching filenames highlighted; 
+to provide mark, copy, and move facilities to update the target 
+directory with one or more selected files from the source.
+
+Format:	DIRMATCH source target [/D][/A]
+
+Remarks:	The source and target may comprise any 
+combination of drives, directories, or subdirectories 
+(with optional * and ? wildcards) valid for the DOS DIR 
+command.  The user will be prompted for target and 
+source directories if his entry is incorrect.  By 
+default,  DIRMATCH displays all files in the two 
+directories.  The optional /D and /A switches restrict 
+the display to Different and Alike files, respectively.  
+The on-screen display, together with the number-of-
+files counters, can be cycled through All, Different, 
+and Alike modes with F1; Shift-F1 cycles in reverse.  
+Pressing Esc exits the utility. Crtl-C will abort the 
+program operation.
+
+	An inverse-video selector bar shows the current 
+position in the listings, and may be moved with the 
+UpArrow, DownArrow, PgUp, PgDn, Home, and End keys.  
+When the selector bar is on a filename, pressing the 
+plus (+) key on the keypad or the +/= key on the 
+keyboard marks the file for further action.  Pressing 
+the minus (-) key on the keypad or the _/- key on the 
+keyboard unmarks a marked file.  F2 marks all files; F3 
+clears all marks.
+
+	A file under the selector-bar or a group of 
+marked files can be copied from source to target 
+directories by pressing F4.  A confirming prompt is 
+provided.  Similarly, pressing F5 moves a file or 
+marked group, by first copying and then deleting 
+file(s) from the source.  While older files can be 
+copied (F4) to the target directory, by default F5 will 
+not move them.  (See Customization Note).
+	
+ 	Pressing F6 prints a list of All files, with 
+more recent matching filenames identified with a 
+greater-than (>) sign.  
+
+	DIRMATCH supports any number of screen display 
+lines, including 43-line (EGA) and 50-line (VGA) modes.  
+It can display up to 1,423 filesnames in its listings.  
+Hidden and read-only files are not displayed.  DIRMATCH 
+requires 64K free RAM in order to run.
+
+	Customization Note:  A sidebar to the original 
+article provides DEBUG instructions for changing the 
+display colors, for removing the move-over-existing 
+file protection, and for adding printer control codes 
+to display highlighted files in boldface rather than 
+with a greater-than sign.
+
+

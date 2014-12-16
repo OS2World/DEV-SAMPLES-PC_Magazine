@@ -1,0 +1,93 @@
+PCMANAGE and DCOMPRES Documentation file
+
+UTILITIES  
+Vol. 8, No. 21
+
+Ross M. Greenberg 
+December 12, 1989 (Utilities)
+
+Purpose: To provide automatic compression of infrequently accessed files and 
+         automatic decompression when they are called.  The user can set the 
+         inactive period necessary before a file is compressed, can restrict 
+         the drive and/or path of operation, and can specifically exclude 
+         named files or directories.
+
+Format: DCOMPRES [/i] [/An]
+	
+Remarks: DCOMPRES is a memory-resident program that should be loaded from an 
+         AUTOEXEC.BAT file.  In each subdirectory it creates and maintains a 
+         file called INDEX.CMP.  This file stores the date and time each file 
+         was last accessed and whether the file is compressed or not.  When a 
+         compressed file is called, DCOMPRES decompresses it automatically.
+
+	INDEX.CMP files are normally created with a Read-Only file attribute,
+        as they should never be deleted while any compressed files remain in 
+        the directory.  To remove a directory requires changing this file 
+        attribute with the DOS ATTRIB command (for DOS 3.x) or with a utility 
+        such as ATTR.COM (PC Magazine, June 10, 1986).  INDEX.CMP files can be 
+        created with other attributes by loading DCOMPRES with its optional 
+        /An switch, where n has one of the following values:  0 (visible, 
+        read-write); 1 (hidden, read-write); 2 (visible, read-only--the 
+        default); or 3 (hidden, read-only).
+
+	If an INDEX.CMP file is accidentally deleted or damaged, all compressed
+        files in a directory can be restored by loading DCOMPRES with its 
+        optional /i switch parameter and issuing a command such as COPY *.* 
+        NUL.
+
+Format:	PCMANAGE [/i] [/dn] [/cn] [/bn] [/pd]
+
+Remarks: When invoked with its default settings, PCMANAGE compresses all files
+         on drive C: (including those in all subdirectories) that have not been
+         accessed in 7 days and whose compression will save at least 10 percent
+         in file length and 2,048 bytes (nominally one cluster).  The user can
+         change the number of days before compression by employing the optional 
+         /dn switch with values from 1 to 32767 for n.  Similarly, the optional
+         /cn switch sets the minimum acceptable compression percentage and 
+         accepts any n value of 5 or greater.  The /bn switch sets the number
+         of bytes in one disk cluster (the minimum real saving possible); it 
+         accepts values from 1024 to 32767 for n.
+
+	The optional /pd switch, with an appropriate drive letter (and/or path)
+        entered for d, allows PCMANAGE to be used on drives other than C: and 
+        permits restricting its operations to the files along a specific path 
+        (and its subdirectories).
+
+	The /i switch is used with PCMANAGE when installing the utility.  This
+        should not be done until after you have prepared any necessary 
+        DCOMPRES.EXL (exclude) file, as described in the Notes below.  That 
+        done, and with DCOMPRES loaded, use the DOS DATE command to set the 
+        current date back by at least one week.  Then enter PCMANAGE /i, which 
+        will cause it to examine all files on drive C: (or as modified by the
+        /pn switch).  Use the DATE command to reset the present date and run 
+        PCMANAGE again, without the /i parameter.  All files on the drive 
+        except those excluded by DCOMPRES.EXL or the optional /pn switch will
+        now be compressed initially, if warranted by the disk space savings. 
+        The files will be decompressed as soon as accessed, and programs called
+        frequently will not be compressed again.  
+
+	Running PCMANAGE weekly will automatically cause files that have become
+        stale-dated to be compressed.
+
+Note 1:	Up to 100 files or directories (and child directories below them) can
+        be excluded from possible compression by PCMANAGE.  All OS/2 files and
+        copy-protected software should be so excluded.  To do so, create a 
+        pure ASCII file called DCOMPRES.EXL in the root directory of drive C:. 
+        List one entry per line.  To exclude all files that have a .SYS 
+        extension and all files in and under an OS2 directory on drive C:, the
+        DCOMPRES.EXL file would have two entries:
+	
+	*.SYS
+	C:\OS2\*
+
+Note 2:	DCOMPRES and PCMANAGE can handle a maximum of 100 files per directory.
+        Files in excess of this number will not be harmed, but will not be 
+        processed.
+
+Note 3: DCOMPRES should be installed in the AUTOEXEC.BAT file before any 
+        anti-virus software.  Anti-virus software that uses checksumming 
+        procedures that cannot be disabled until program execution time is 
+        incompatible with DCOMPRES.
+
+
+

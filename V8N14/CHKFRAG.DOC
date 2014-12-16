@@ -1,0 +1,47 @@
+
+CHKFRAG
+Command
+
+Bob Flanders and Michael Holmes
+August, 1989 (Utilities)
+
+
+Purpose:	To report, on-screen, the extent of file fragmentation on a hard
+disk, and provide an ERRORLEVEL value usable within a batch file to call a
+defragmenting program.  
+
+Format:	CHKFRAG [d:] [/% | /N | /E] [/L]
+
+Remarks:	Executed without any of its optional parameters, CHKFRAG
+produces a screen report indicating the number of files and directories, how
+many and what percentage of these are fragmented, and how many extra (non-
+contiguously stored) parts of files are contained on the currently-logged drive.
+An ERRORLEVEL code from 0-100, reflecting the percentage of fragmented files,
+(the /% parameter is the default) is also shown.
+
+	An alternative drive (d:) to be analyzed may be specified, as may be
+ERRORLEVEL return codes that reflect the actual number of fragmented files (the
+/N parameter) or of extra sections (the /E parameter).  The ERRORLEVEL return
+codes are not intended for strict accuracy:  if any file is fragmented the
+minimum ERRORLEVEL returned by the /% parameter is 1%, and 254 is the maximum
+ERRORLEVEL returned by the /N and /E switch options.  These return codes are
+intended to be used to trigger automatic loading and execution of the user's
+defragmenting utility from within a batch file.  An ERRORLEVEL return code of
+255 is used to indicate an error condition, which halts operation.
+
+	If desired, a list of the names of fragmented files and directories can
+be produced by specifying the optional /L parameter.  The normal screen output
+from CHKFRAG may be redirected to a file or to a printer, for easier analysis.
+
+	The DOS CHKDSK command, specified with its /F switch, should be executed
+before running CHKFRAG; lost clusters or cross-linked files are interpreted by
+CHKFRAG as a error condition.  Drives created with the DOS ASSIGN or SUBST
+commands, and directories created by JOIN, are not checked by CHKFRAG.  While
+analyzing large disks, the utility requires approximately 100KB of available
+RAM.  On-screen recommendations are to consider using a defragmenting utility
+when file fragmentation is in the range from 11% to 75%, and definitely to
+defragment disks that show more than 75% fragmentation. 
+
+	CHKFRAG.EXE was written in the C language and its source code should be
+compiled using the Microsoft C Compiler, Version 5.0 or later. 
+®MDNM¯

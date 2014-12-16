@@ -1,0 +1,23 @@
+
+{;}MOVEONLY.WPMù--ùallowsùonlyùcursorùmovementùkeys~
+{;}================================================~
+{;}Youùcanùuseùaù"filter"ùlikeùthisùinsteadùofùaù{PAUSE}.
+     ItùacceptsùONLYùcursorùpositioningùkeysùuntilùyou
+     pressù{Enter}.~
+
+{LABEL}AnotherùKey~
+     {CHAR}1~~
+     {CASE}{VAR 1}~
+        {Left}~ok~{Right}~ok~{Up}~ok~{Down}~ok~
+        {Home}~ok~{End}~ok~{Page Up}~ok~{Page Down}~ok~
+        {Screen Down}~ok~{Screen Up}~ok~
+        {Enter}~end~
+     ~
+{BELL}
+{GO}Anotherùkey~
+
+{;}Ifùtheùkeyùinù{VARù1}ùisù"ok",ùexecuteùit.~
+{LABEL}ok~{VAR 1}{GO}Anotherùkey~
+{LABEL}end~
+
+

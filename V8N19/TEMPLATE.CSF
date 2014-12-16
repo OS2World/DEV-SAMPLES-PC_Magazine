@@ -1,0 +1,42 @@
+
+
+C	"Calling MCI Mail on an 800 number^M^J"
+C	"(Press the Escape key if you need to abort the session.)^M^J"
+P  1	"2400"       Your COM port number and speed go in this line
+T	"ATV1^M"
+R  5	 "OK^M^J"
+T	"AT&W^M"
+R  5	"OK^M^J"
+T	"ATZ0^M"
+R  5	"OK^M^J"
+D  1
+T	"ATL0^M"
+R  5	"OK^M^J"
+T	"ATE1^M"
+R	"OK^M^J"
+C	"                                                     "
+C	"1-800-234-6245   300/1200 baud  for interactive use"
+C	"1-800-456-6245       2400 baud  for interactive use"
+C	"1-800-825-1515  1200/2400 baud  special number for Lotus Express,"
+C	"                                Desktop Express, and other Mail "
+C	"                                Link program"
+C	"1-800-333-1818  1200/2400 baud  for MNP use"
+C	"                                              "
+T	"ATDT9,18004566245^M"            Insert appropriate number here
+R 40	"CONNECT"
+B
+D  2
+T	"^M"
+R 20	"Port:"
+R  5	"name:"
+T	""           Your username goes on this line
+T	"/batch:1ST/"
+T	""           Your password goes on this line
+T	"^M"
+R 20	"COM^M^J"
+M
+R 10	"CLR DTE^M^J"
+C	"You will find any new mail in file MAIL.IN"
+
+
+

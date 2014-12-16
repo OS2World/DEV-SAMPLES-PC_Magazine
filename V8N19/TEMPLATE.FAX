@@ -1,0 +1,15 @@
+To: Joe Miller
+EMS: FAX
+mbx: Phone: 415-555-5555
+
+This file is a template for creating a message for 1STCLASS to deliver to a fax
+machine via MCI Mail.
+
+To use:
+	o   Copy the file to <something>.OUT, then edit that file and:
+	o   Change the recipient name on the first line.
+	o   Change the telephone number to that of the target fax machine.
+	o   Replace this text with your message.
+
+Remember that faxes cannot have attachments!
+

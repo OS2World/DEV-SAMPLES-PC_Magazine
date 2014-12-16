@@ -1,0 +1,52 @@
+UTILITIES  TERRY LAHMAN                
+Vol. 9, No. 1                       
+
+
+PCREMOTE
+
+Command
+
+Terry Lahman  January 16, 1990  (Utilities)
+
+Purpose: To permit accessing and operating an off-site computer from your own 
+         keyboard by using a modem link.
+
+Format:  PCREMOTE [/M] [/2] [/F] [/D]
+
+Remarks: PCREMOTE is actually two programs in one.  Entered without the /M 
+         switch it becomes RAM-resident on the off-site computer to be 
+         controlled.  This machine and its modem must be left powered on to 
+         receive calls, but may otherwise be used normally or left unattended.
+
+	 To gain access and control over the off-site computer, execute 
+         PCREMOTE /M from the command line of your own machine.  You will be 
+         prompted to enter a phone number, which will then be dialed 
+         automatically.  Upon connection, the off-site computer will prompt 
+         you for a password, which you must enter correctly within three tries.
+         The default password is PC Magazine (see the note below).
+
+	 After password verification, you can execute all text-based 
+         (non-graphical) programs on the off-site computer by entering the 
+         appropriate keystrokes at your own keyboard.  (The keyboard of the 
+         off-site machine remains active, as well.)  All screen displays that 
+         appear on the off-site machine will also appear on your monitor.  
+
+	 To terminate PCREMOTE enter Alt-x and confirm your intention by 
+         responding yes at the prompt window.  Both computers will then hang up
+         the phone and your machine will return to DOS.  The off-site computer
+         will continue to execute any program that was begun before PCREMOTE 
+         was terminated.  The off-site machine can thus print out large files 
+         while you are off line, given sufficient paper.
+
+         PCREMOTE defaults to COM1 at 1200 bps.  Using the optional /2 switch 
+         on its command line will engage COM2 insead of COM1.  Similarly, the 
+         /F switch sets the bps rate to 2400.  If you are using a CGA card and 
+         snow is a problem, use the /D (Desnow) option on the command line. 
+
+Note:	 You can change your password with DEBUG.  A new password of up to 20 
+         characters may be entered, within single quotes, at address 1F3h of 
+         PCREMOTE.COM.  The length of the new password (not including the 
+         single quotes) must also be entered, in hex, at address 1F1h.  
+
+	
+

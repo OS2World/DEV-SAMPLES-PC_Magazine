@@ -1,0 +1,45 @@
+®LM0¯®RM55¯®IP0,12¯®TS12,15,35,42C,47C¯®PT4¯®NJ¯
+®MDRV¯®MDNM¯®FR¯EMS40.SYS
+Device Driver
+®FL¯®LD_¯
+Douglas Boling®LD ¯1989 No. 12 (Utilities)
+®LD_¯
+
+®MDBO¯®LS2¯Purpose:®MDNM¯	A device driver that emulates the Lotus/Intel/Microsoft Expanded Memory Specification, Version 4.0, in software, permitting extended memory in AT-class machines to be used as expanded memory.®LS1¯
+
+®MDBO¯Format:®MDNM¯®PT3¯	DEVICE=[®MDUL¯d:\®MDNM¯][®MDUL¯path\®MDNM¯]EMS40.SYS [®MDUL¯nnn®MDNM¯®MDUL¯®MDNM¯]
+	
+®MDBO¯®LS2¯®PT4¯®MDBO¯Remarks:®MDNM¯	EMS40.SYS is installed by being listed in the CONFIG.SYS file.  The driv®MDNM¯e and path information must be supplied if needed by DOS to find the driver at boot-up.  Once installed, EMS40.SYS cannot be removed from memory without rebooting.
+
+	The optional ®MDUL¯nnn®MDNM¯ parameter allows the user to specify the amount of extended memory, in KB, that will be used as expanded memory by EMS40.SYS.  If omitted, the default value is 384 KB.  By setting ®MDUL¯nnn®MDNM¯ to a smaller value than that of the extended memory installed, space can be reserved for extended memory programs such as VDISK.
+
+	EMS40.SYS maps extended memory into four contiguous 16 KB pages in conventional DOS memory, permitting access to large spreadsheets and other data that would otherwise result in a "Memory Full" error.  While not as fast in operation as a dedicated LIM/EMS board and driver, it implements, within the limitions of a software emulation, all 28 functions specified in LIM/EMS 4.0.  (It does not attempt to emulate the DMA functions included in Function 28, Alternate Map Register Set, however.)
+
+	Available for downloading from PC MagNet (see the EMS40 by Modem sidebar in the main article), EMS40.SYS is already compiled and ready to run.  As an alternative, EMS40.SYS can be created from either of two program files that are printed in the article and are also available for downloading from PC MagNet.  EMS40.BAS will automatically create EMS40.SYS when run once in BASIC.  To create EMS40.SYS from the EMS40.ASM source code requires use of a macro assembler (IBM or Microsoft, Version 2 or later) and the following commands:®LS1¯
+
+	®PT3¯MASM EMS40;
+	LINK EMS40;
+	EXE2BIN EMS40 EMS40.SYS;
+	
+®MDRV¯®PG¯®IP0,0¯
+®RHA®PT2¯®LM10¯®RM75¯UTILITIES o Jeff Prosise     p.  ®PN¯  of ®FP¯ 
+Vol. 8, No. 11                      Filename:  ®VA$FI¯
+
+
+¯®PT2¯®LM0¯®RM50.5¯®AL0¯®LS2¯®TS23¯
+®RM30.5¯®PL55¯
+CE:LL®MDNM¯
+(Eyebrow)
+PC MAGAZINE'S FREE UTILITY: A SUMMARY
+
+
+EMS40 BY MODEM
+
+The programs published in ®MDUL¯PC Magazine®MDNM¯ are available by modem from PC MagNet, an on-line information service.
+   To download EMS40.SYS, log on to PC MagNet.  Enter GO UTILITIES or choose PC MAGAZINE UTILITIES from the top menu, then DIRECT UTILITY DOWNLOAD from the next.  Enter the filename, then select the file from those presented.  Answer (Y) to DO YOU WISH TO DOWNLOAD?  Press Enter to see the transfer protocols.  Choose a protocol and download the file.
+   To join PC MagNet, set your communications software for either 300 or 1,200 bits per second, 7 data bits, even parity, 1 stop bit, and full duplex.  You can use any of more than 300 local access phone numbers, including: Boston, (617) 542-1796; New York, (212) 422-8820; Chicago, (312) 693-0330; or San Francisco, (415) 956-4191.  To find the number nearest your dialing exchange after you have subscribed, or for 2,400-bps service, connect with PC MagNet and type GO PHONES.  For Customer Service, call (800) 848-8990; in Ohio and outside the United States, call (614) 457-8650.
+   When you connect with PC MagNet, press Ctrl-C.  At the HOST NAME PROMPT, enter CIS.  At the USER ID prompt, enter 177000,5000.  Enter PC*MAGNET at the PASSWORD prompt and Z10D8912 at the ENTER AGREEMENT NUMBER prompt.
+   You don't have to be a member of CompuServe to access PC MagNet. It costs $12.50 an hour for 1,200/2,400-bps service and $6 for 300-bps, via MasterCard, VISA, or American Express. These programs can be copied but are copyrighted and are made available only for noncommercial use.  You may make copies for others as long as no charge is involved, but making copies for any commercial purpose is strictly prohibited.
+®MDNM¯
+®MDUL¯Photocopy this page. Trim and hole-punch the copy and add it to your DOS manual.®MDNM¯
+®MDNM¯

@@ -1,0 +1,41 @@
+
+{;}VARMAC.WPMùdemonstratesùputtingùCOMMANDSùinùvariables~
+{;}=====================================================~
+{;}{VARù1}ùholdsùusersùname,ùenteredùfromùkeyboard~
+{;}{VARù2}ùgetsùchoiceùofùheaderùorùfooter~
+{;}Theùmacroùbuildsùaùcommandùinù{VARù3}ùandùthenùexecutesùit~
+
+{TEXT}1~Whatùisùyourùname:~
+{ASSIGN}3~~
+{LABEL}top~
+     {CHAR}2~Makeùaù{^]}1.ùH{^\}eaderùorùaù{^]}2.ùF{^\}ooter?ù0~
+     {CASE}{VAR 2}~
+        1~dohead~H~dohead~h~dohead~
+        2~dofoot~F~dofoot~f~dofoot~
+     ~
+     {;}Ifùweùreachùthisùspot,ùitùmeansùtheùuser'sùinput
+        wasùnotù1,ù2,ùH,ùh,ùF,ùorùf~
+     {PROMPT}{BELL}Badùinput,ùtryùagain.~
+     {WAIT}10~
+{GO}top~
+
+{LABEL}good~
+     {;}Addùtheùcontentsùofù{VARù1}ùtoùtheùcommands
+        inù{VARù3},ùalongùwithùaù[HRt]ùandùtwo
+        {Exit}ùcommands.~
+     {ASSIGN}3~{VAR 3}{VAR 1}{Enter}{Exit}{Exit}~
+     {DISPLAY OFF}
+     {VAR 3}
+     {DISPLAY ON}
+{QUIT}
+
+{LABEL}dohead~
+     {;}Putùcommandsùtoùcreateùaùheaderùintoù{VARù3}~
+     {ASSIGN}3~{Format}phap~
+{GO}good~
+
+{LABEL}dofoot~
+     {;}Putùcommandsùtoùcreateùaùfooterùintoù{VARù3}~
+     {ASSIGN}3~{Format}pfap~
+{GO}good~
+

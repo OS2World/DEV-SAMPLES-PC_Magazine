@@ -1,0 +1,28 @@
+  FUNCTION GraphPath : PathStr;
+  (*Returns the path to your BGI files.  Assumes
+    that at least one of CGA, EGA, or Hercules
+    is present.  Asks for user help if it can't
+    find them.  Requires "USES DOS".*)
+  VAR
+    OneBGI : PathStr;
+    Dummy  : NameStr;
+  BEGIN
+    OneBGI := FSearch('CGA.BGI',GetEnv('PATH'));
+    IF OneBGI = '' THEN
+      OneBGI := FSearch('HERC.BGI',GetEnv('PATH'));
+    IF OneBGI = '' THEN
+      OneBGI := FSearch('EGAVGA.BGI',GetEnv('PATH'));
+    IF OneBGI = '' THEN
+      BEGIN
+        WriteLn('The BGI drivers are not present on your PATH.');
+        WriteLn('Please enter the full path to the BGI drivers,');
+        Write('>');
+        ReadLn(OneBGI);
+      END
+    ELSE
+      BEGIN
+        OneBGI := FExpand(OneBGI);
+        FSplit(OneBGI, OneBGI, dummy, dummy);
+      END;
+    GraphPath := OneBGI;
+  END;
