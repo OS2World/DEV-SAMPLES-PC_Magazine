@@ -1,0 +1,10 @@
+
+trytd.obj : trytd.asm
+  masm /Zi trytd;
+
+td.obj : td.asm
+  masm /Zi td;
+
+trytd.exe : td.obj trytd.obj trytd.def trytd
+  link /CO trytd+td,trytd,,os2,trytd
+
