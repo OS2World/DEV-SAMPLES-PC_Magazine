@@ -1,0 +1,12 @@
+;----------------------------------
+; PMASC.DEF module definition file
+;----------------------------------
+
+NAME           PMASC     WINDOWAPI
+
+DESCRIPTION    'ASCII and EBCDIC Table (c) 1989, Ziff Communications Co.'
+PROTMODE
+HEAPSIZE       1024
+STACKSIZE      8192
+EXPORTS        ClientWndProc
+               AboutDlgProc

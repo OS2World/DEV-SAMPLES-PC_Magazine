@@ -1,0 +1,16 @@
+#-----------------
+# PMASC make file
+#-----------------
+
+pmasc.obj : pmasc.c pmasc.h
+     cl -c -G2sw -W3 pmasc.c
+
+pmasc.res : pmasc.rc pmasc.h pmasc.ico
+     rc -r pmasc
+
+pmasc.exe : pmasc.obj pmasc.def
+     link pmasc, /align:16, NUL, os2, pmasc
+     rc pmasc.res
+
+pmasc.exe : pmasc.res
+     rc pmasc.res

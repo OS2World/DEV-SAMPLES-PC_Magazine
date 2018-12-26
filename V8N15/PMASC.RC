@@ -1,0 +1,53 @@
+/*--------------------------
+   PMASC.RC resource script
+  --------------------------*/
+
+#include <os2.h>
+#include "pmasc.h"
+
+POINTER ID_RESOURCE pmasc.ico
+
+MENU ID_RESOURCE
+     {
+     SUBMENU "~Codepage",                    -1
+          {
+          SUBMENU "~ASCII",                  -1
+               {
+               MENUITEM "437: ~US-English (original PC)",    437
+               MENUITEM "850: ~Multilingual (PM standard)",  850
+               MENUITEM "860: ~Portuguese",                  860
+               MENUITEM "863: ~Canadian-French",             863
+               MENUITEM "865: ~Norwegian",                   865
+               }
+          SUBMENU "~EBCDIC",                 -1
+               {
+               MENUITEM "037: ~US-English",                   37
+               MENUITEM "273: ~Austrian-German",             273
+               MENUITEM "274: ~Belgian",                     274
+               MENUITEM "277: ~Danish-Norwegian",            277
+               MENUITEM "278: ~Finnish-Swedish",             278
+               MENUITEM "280: ~Italian",                     280
+               MENUITEM "282: ~Portuguese",                  282
+               MENUITEM "284: ~Spanish",                     284
+               MENUITEM "285: U~K-English",                  285
+               MENUITEM "297: F~rench",                      297
+               MENUITEM "500: I~nternational",               500
+               }
+          MENUITEM SEPARATOR
+          MENUITEM "A~bout PMASC...",        IDM_ABOUT
+          }
+     }
+
+DLGTEMPLATE IDD_ABOUT
+     {
+     DIALOG "", 0, 32, 32, 200, 100,, FCF_DLGBORDER
+          {
+          CTEXT "ASCII and EBCDIC Table"              -1, 10, 76, 180, 8
+          ICON  ID_RESOURCE                           -1,  8, 68,   0, 0
+          CTEXT "PC Magazine, Vol. 8, Nos. 14 & 15"   -1, 10, 52, 180, 8
+          CTEXT "(c) 1989, Ziff Communications Co."   -1, 10, 42, 180, 8
+          CTEXT "Programmed by Charles Petzold, 3/89" -1, 10, 32, 180, 8
+          DEFPUSHBUTTON "OK"             DID_OK, 80, 8, 40, 16, WS_GROUP
+          }
+     }
+
