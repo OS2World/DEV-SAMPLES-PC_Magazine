@@ -1,0 +1,16 @@
+
+showenv.obj : showenv.asm
+  masm showenv;
+
+getenv1.obj : getenv1.asm
+  masm getenv1;
+
+getenv2.obj : getenv2.asm
+  masm getenv2;
+
+showenv1.exe : showenv.obj getenv1.obj showenv1.def showenv
+  link showenv+getenv1,showenv1,,os2,showenv1.def
+
+showenv2.exe : showenv.obj getenv2.obj showenv2.def showenv
+  link showenv+getenv2,showenv2,,os2,showenv2.def
+
