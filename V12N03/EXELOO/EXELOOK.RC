@@ -1,0 +1,51 @@
+// Resource script for ExeLook.C
+
+#include "windows.h"
+#include "ExeLook.h"
+
+ExeLookIcon ICON ExeLook.ico
+
+ExeLookMenu MENU
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM   "&Open",    IDM_OPEN
+        MENUITEM   "E&xit",    IDM_EXIT
+        MENUITEM   SEPARATOR
+        MENUITEM   "A&bout",   IDM_ABOUT
+    END
+    POPUP "&Display"
+    BEGIN
+	MENUITEM   "DOS (&MZ) Header",      IDM_DOSHDR
+	MENUITEM   "COFF &File Header",     IDM_COFFHDR
+	MENUITEM   "COFF &Optional Header", IDM_OPTHDR
+	MENUITEM   "&Data Directory",       IDM_DATADIR
+	MENUITEM   "&Sections",             IDM_SECT
+	MENUITEM   "&Imports",              IDM_IMPORT	
+	MENUITEM   "&Exports",              IDM_EXPORT
+        MENUITEM   "&Resources",            IDM_RESOURCE
+	MENUITEM   "Resource &Tree",        IDM_RSRCTREE
+    END
+END
+
+AboutBox DIALOG 22, 17, 126, 53
+CAPTION "About ExeLook..."
+STYLE DS_MODALFRAME | WS_CAPTION | WS_SYSMENU
+BEGIN
+	ICON "ExeLookIcon", -1, 7, 8, 16, 16, WS_CHILD | WS_VISIBLE
+	CTEXT "NT EXE Looker 0.1", -1, 33, 6, 84, 8
+	CTEXT "\251 1992 Petit Mal Software", -1, 32, 16, 87, 9
+	CONTROL "OK", IDOK, "BUTTON", WS_GROUP, 47, 35, 32, 14
+END
+
+
+
+
+
+
+
+
+
+
+
+				       

@@ -1,0 +1,17 @@
+/*----------------------------------
+   BITFONT2.RC resource script file
+  ----------------------------------*/
+
+#include <os2.h>
+#include "bitfont2.h"
+
+MENU ID_RESOURCE
+     {
+     SUBMENU "~Attributes",        IDM_ATTRS
+          {
+          MENUITEM "~Italic",      IDM_ITALIC
+          MENUITEM "~Underscore",  IDM_UNDERSCORE
+          MENUITEM "~Strikeout",   IDM_STRIKEOUT
+          MENUITEM "~Bold",        IDM_BOLD
+          }
+     }

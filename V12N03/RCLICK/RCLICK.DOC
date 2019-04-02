@@ -1,0 +1,93 @@
+RCLICK.EXE (VERSION 1.0)            Copyright (c) 1992 by Douglas Boling
+-------------------------------------------------------------------------
+              First Published in PC Magazine February 9, 1993 (Utilities)
+-------------------------------------------------------------------------
+
+RCLICK:
+        RCLICK is a pop-up menu program for Windows that replicates a
+menu bar for a window and displays it right where your cursor is. You
+can configure RCLICK to work only with certain programs.
+
+     Are you tired of walking your mouse?  That's what GUI (graphical
+user interface) veterans call it when you have to pick up and carry your
+mouse back to its starting point because you didn't have enough desktop
+space to move the cursor far enough in one motion.
+
+     I've put on most of my mouse mileage moving the cursor to and from a
+menu in order to select an item there.  All those trips to the menu bar
+made me wish that the menu choices could be brought to the cursor rather
+than vice versa.  That's what RCLICK does.  With RCLICK active, any time
+you press the right mouse button, a duplicate menu will pop up right at
+the spot where your Windows cursor is currently located.
+
+     RCLICK can be configured not to pop up over the few Windows programs
+that use the right mouse button.  The utility will remember the names of
+these programs, so that you have to teach RCLICK only once.
+
+     To work from the source files, you'll need either the Microsoft
+C 6.0 compiler and the Windows SDK, or Borland's C++ 3.0 compiler.
+
+USING RCLICK
+
+       To install RCLICK, just copy the RCLICK.EXE and RCHOOK.DLL files
+into a directory on your path.  Then select the File|Run menu item in the
+Program Manager and enter RCLICK.  If you want RCLICK to start each time
+you bring up Windows, simply add the RCLICK icon to the Program Manager's
+Startup group, using the File|New menu selection.  (If you're still using
+Windows 3.0, you'll have to add the RCLICK program name to the
+RUN= statement in your WIN.INI file.)
+
+     The only change you'll see on your desktop when RCLICK starts is the
+addition of the small RCLICK icon at the bottom of the desktop.  The real
+action begins when you press the right mouse button over a window that
+has a menu.  A pop-up menu will appear that contains all the items on the
+menu bar plus one additional item that calls up additional RCLICK
+options. When you click on a menu item, a submenu containing all the menu
+items for the main  menu item will appear.  Selecting any one of these
+items will perform the same action as if you had moved the cursor up to
+the menu bar and selected the item there.
+
+     For example, if you press the right button over the Program Manager,
+you'll see a menu containing the items File, Options, Window, Help, and
+an item labeled RClick.  Clicking with the normal left button on the File
+item will reveal a submenu containing the items New, Open, Move, Copy,
+Delete, Properties, Run, and Exit.  Clicking on the New item will cause
+the Program Manager to display the New Program dialog box.  That's just
+what would have happened had you selected the File|New menu item from the
+menu bar.  The difference is that you didn't have to move the cursor up
+to the menu bar and back!  Note that if you pop up the RCLICK menu by
+accident, clicking with the mouse anywhere on the desktop outside the
+menu will make it go away.
+
+     RCLICK builds the appropriate pop-up menu each time you right-click.
+Clicking on the RClick menu item produces a submenu with two items,
+Configure and About.  Selecting Configure displays a dialog box with
+three buttons that allow you to configure RCLICK. The first button,
+labeled ``Do not pop up on Window,'' allows you to tell RCLICK never to
+pop up over any window from that program again.
+
+     The second button, Disable RCLICK, allows you to disable the utility
+for all windows.  The Cancel button closes the Configure dialog box
+without any action taking place.  If you accidentally disable RCLICK you
+can reenable it using the RCLICK main dialog box, which will be
+discussed below.
+
+     Selecting the RClick About menu item displays the About dialog box,
+which contains the name and version of the program, along with the
+copyright notice.
+
+     Clicking on the RCLICK icon and then on Restore reveals RCLICK's
+main dialog box. The list box contains the names of all the programs
+RCLICK has been told to avoid.  Again, the Disable button disables
+RCLICK for all windows, but in this case when you disable RCLICK,
+the text of this button changes to Enable.  Pressing it will reenable
+the utility. The Remove button allows you to remove program names from
+the No Pop list simply by selecting the program name and clicking on the
+Remove button.  The About button displays the same About dialog box that
+is available from the RClick pop-up menu.  The final button, Exit, closes
+the RCLICK window and ends the program.  When the RCLICK program
+terminates, it saves both the No Pop list and the disable/enable state
+in its configuration file, RCLICK.INI.
+------------------------------------------------------------------------
+DOUGLAS BOLING IS A CONTRIBUTING EDITOR TO PC MAGAZINE.
+

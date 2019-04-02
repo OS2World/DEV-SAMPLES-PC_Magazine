@@ -1,0 +1,8 @@
+;-------------------------------------
+; BITFONT2.DEF module definition file
+;-------------------------------------
+
+NAME           BITFONT2  WINDOWAPI
+
+DESCRIPTION    'Bitmap Fonts in OS/2 2.0 PM (c) Charles Petzold, 1993'
+PROTMODE
